@@ -2,8 +2,9 @@ const Cardapio = require('../models/Cardapio')
 
 let cardapioController = {
     listarCardapio: (req, res) => { 
-        let listaDePizza = Cardapio.listarCardapio();
-        res.send(listaDePizza);
+        let listaDePizza = Cardapio.cardapio;
+        //res.send(listaDePizza);
+        res.render("cardapio", {listaDePizza});
     },
     cadastrarPizza: (req, res) => {
         let {flavor} = req.params;

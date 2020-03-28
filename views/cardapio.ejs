@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./includes/head', {title: "Cardapio"}) %>
+<body>
+    <%- include('./includes/header') %>
+
+    <main class="container mt-5">
+        <div class="row">
+        <% listaDePizza.forEach((pizza,index) => { %>
+        
+            <div class="col-md-4 p-2">
+                <div class="card">
+                    <img class="card-img-top" src="/img/<%= pizza.img %>" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= pizza.flavour %></h5>
+                        <p class="card-text">Preço da pizza:  <%= pizza.preco %></p>
+                        <button class="btn btn-success">Comprar</button>
+                    </div>
+                 </div>
+            </div>
+        <% }) %>
+        </div>
+    </main>
+</body>
+</html>
