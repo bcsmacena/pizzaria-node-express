@@ -6,5 +6,17 @@ let cardapio = [
 
 let listarCardapio = () => cardapio 
 
+let cadastrarPizza = (flavour, preco) => {
+    let novaPizza = {
+        flavour,
+        preco,
+        img: 'pizza-mussarela.jpg'
+    }
+    return cardapio.push(novaPizza);
+}
 
-module.exports = {listarCardapio, cardapio}
+let deletarPizza = (posicao) => {
+    return cardapio.splice(posicao, 1);
+}
+
+module.exports = {listarCardapio, cadastrarPizza, deletarPizza}

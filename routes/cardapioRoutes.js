@@ -11,4 +11,12 @@ route.get('/cadastrar/:flavor/:preco', cardapioController.cadastrarPizza)
 
 route.get('/visualizar',  cardapioController.listarCardapio)
 
+// cadastro de itens
+
+route.get('/cadastro', cardapioController.formCadastro);
+route.post('/cadastro', cardapioController.salvarCadastro);
+
+// remoção de itens
+route.delete('/deletar/:posicao', cardapioController.deletarPizza);
+
 module.exports = route
