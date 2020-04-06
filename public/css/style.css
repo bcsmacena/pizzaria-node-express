@@ -10,3 +10,31 @@
 .vh-75 {
     height: 75vh!important;
 }
+
+.btn-add-new-card {
+    padding: 0 0 3px 0;
+    width: 75px;
+    height: 75px;
+    background-color: crimson;
+    border-radius: 50%;
+    border: 2px solid white;
+    font-size: 28px;
+}
+
+.badge {
+    border:none;
+    background-color: crimson;
+}
+
+.badge-danger {
+    border:none;
+    background-color: crimson;
+}
+
+.badge-danger[href]:hover {
+    background-color: crimson;
+}
+
+.card-size{
+    height: 457px;
+}

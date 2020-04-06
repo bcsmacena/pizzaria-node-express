@@ -4,17 +4,7 @@
 <body>
     <%- include('./includes/header') %>
     <main class="container d-flex justify-content-center align-items-center vh-75">
-        
-        <!--
-            titulo para o formulario
-            campo para o nome da pizza
-            campo para o preço da pizza
-            button do tipo submit
-            a width do form será fixa em 400px
-            form deverá ficar ao centro da tela, tanto na horizontal quanto na vertical
-        -->
-        
-        <form action="/cardapio/cadastro" method="POST" class="form-cadastro">
+        <form action="/cardapio/cadastro" method="POST" enctype="multipart/form-data" class="form-cadastro">
             <h2>Cadastro de pizza</h2>
             <div class="form-group">
                   <label for="nomePizza">Nome da Pizza: </label>
@@ -22,7 +12,11 @@
             </div>
             <div class="form-group">
                   <label for="precoPizza">Preço da Pizza: </label>
-                  <input id="precoPizza" name="precoPizza" type="number" class="form-control" placeholder="Ex.: 35">
+                  <input id="precoPizza" name="precoPizza" type="number" class="form-control" placeholder="Ex.: 35.00" step=".01">
+            </div>
+            <div class="form-group">
+                <label for="fotoPizza">Foto da Pizza: </label>
+                <input type="file" class="form-control" name="fotoPizza" id="fotoPizza">
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-success col-sm-12">Salvar</button>

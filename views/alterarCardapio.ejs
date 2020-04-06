@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./includes/head', {title: "Alteração"}) %>
+<body>
+    <%- include('./includes/header') %>
+    <main class="container d-flex justify-content-center align-items-center vh-75 flex-column">       
+        <form action="/cardapio/alterar?_method=PUT" method="POST" class="form-cadastro">
+            <h2>Alteração de pizza</h2>
+            <input type="number" value="<%= posicao %>" name="posicao" hidden/>
+            <div class="form-group">
+                  <label for="nomePizza">Nome da Pizza: </label>
+                  <input id="nomePizza" name="nomePizza" type="text" class="form-control" placeholder="Ex.: Mussarela" value="<%= pizza.flavour %>">
+            </div>
+            <div class="form-group">
+                  <label for="precoPizza">Preço da Pizza: </label>
+                  <input id="precoPizza" name="precoPizza" type="number" class="form-control" placeholder="Ex.: 35" value="<%= pizza.preco %>">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success col-sm-12">Finalizar Alteração</button>
+            </div>
+       </form>
+       <% if (typeof(msg) != 'undefined') { %>
+        <div class="d-flex justify-content-end">
+            <div class="alert alert-success ">
+                    <%= msg %>
+            </div>     
+        </div>
+        <% } %>
+
+    </main>
+    
+</body>
+</html>

@@ -1,22 +1,64 @@
-let cardapio = [
-    {flavour: "Mussarela", preco: "R$ 25,00", img: "pizza-mussarela.jpg"},
-    {flavour: "Frango com Catupiry", preco: "R$ 45,00", img: "pizza-frango-catupiry.jpg"},
-    {flavour: "Calabresa", preco: "R$ 27,00", img: "pizza-calabresa.jpg"}
-];
+const fs = require('fs');
+const path = require('path');
 
-let listarCardapio = () => cardapio 
+cardapioBD = path.join('cardapio.json');
 
-let cadastrarPizza = (flavour, preco) => {
+let listarCardapio = () => {
+    
+    let cardapioJson = fs.readFileSync(cardapioBD, {encoding: 'utf-8'});
+    cardapio = JSON.parse(cardapioJson);
+
+    return cardapio
+} 
+
+let cadastrarPizza = (flavour, preco, nomeImg) => {
     let novaPizza = {
+        flavour,
+        preco,
+        img: nomeImg
+    }
+
+    let cardapioJson = fs.readFileSync(cardapioBD, {encoding: 'utf-8'});
+    let cardapio = JSON.parse(cardapioJson);
+    cardapio.push(novaPizza);
+    cardapioJson = JSON.stringify(cardapio);
+    fs.writeFileSync(cardapioBD, cardapioJson);
+    
+}
+
+let deletarPizza = (posicao) => {
+    
+    let cardapioJson = fs.readFileSync(cardapioBD, {encoding: 'utf-8'});
+    cardapio = JSON.parse(cardapioJson);
+    cardapio.splice(posicao, 1);
+    cardapioJson = JSON.stringify(cardapio);
+    fs.writeFileSync(cardapioBD, cardapioJson);
+
+}
+
+let buscarPizza = (posicao) => {
+    let cardapioJson = fs.readFileSync(cardapioBD, {encoding: 'utf-8'});
+    cardapio = JSON.parse(cardapioJson);
+
+    return cardapio[posicao];
+}
+
+let atualizarPizza = (flavour, preco, posicao) => {
+    let pizza = {
         flavour,
         preco,
         img: 'pizza-mussarela.jpg'
     }
-    return cardapio.push(novaPizza);
+    let cardapioJson = fs.readFileSync(cardapioBD, {encoding: 'utf-8'});
+    cardapio = JSON.parse(cardapioJson);
+
+    cardapio[posicao] = pizza;
+
+    fs.writeFileSync(cardapioBD, JSON.stringify(cardapio));
+
+    return pizza;
 }
 
-let deletarPizza = (posicao) => {
-    return cardapio.splice(posicao, 1);
-}
 
-module.exports = {listarCardapio, cadastrarPizza, deletarPizza}
+
+module.exports = {listarCardapio, cadastrarPizza, deletarPizza, buscarPizza, atualizarPizza}
